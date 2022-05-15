@@ -11,17 +11,39 @@
   </head>
   <body>
     <nav id="navbar">
-      <header></header>
-      <a class="nav-link" href=""></a>
-      <a class="nav-link" href=""></a>
-      <a class="nav-link" href=""></a>
-      <a class="nav-link" href=""></a>
-      <a class="nav-link" href=""></a>
-      <a class="nav-link" href=""></a>
-      <a class="nav-link" href=""></a>
+      <header>SASS Documentation</header>
+      <ul>
+        <li>
+          <a class="nav-link" href="#Sass_Tutorial">Sass Tutorial</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Introduction">Introduction</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Installation">Installation</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Variables">Variables</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#Nested_Rules_and_Properties">Nested Rules and Properties</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#@import_and_Partials">@import and Partials</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#@mixin_and_@include">@mixin and @include</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#@extend_and_Inheritance">@extend and Inheritance</a>
+        </li>
+        <li>
+          <a class="nav-link" href="#reference">Reference</a>
+        </li>
+      </ul>
     </nav>
     <main id="main-doc">
-      <section class="main-section">
+      <section class="main-section" id="Sass_Tutorial">
         <header>Sass Tutorial</header>
         <p>
           Sass is a CSS pre-processor. Sass reduces repetition of CSS and
@@ -30,94 +52,386 @@
         <p></p>
         <p></p>
         <code>
-            /* Define standard variables and values for website */
-            $bgcolor: lightblue;
-            $textcolor: darkblue;
-            $fontsize: 18px;
-            
-            /* Use the variables */
-            body {
-              background-color: $bgcolor;
-              color: $textcolor;
-              font-size: $fontsize;
-            } 
+          /* Define standard variables and values for website */ 
+          $bgcolor: lightblue;
+          $textcolor: darkblue;
+          $fontsize: 18px;
+          
+          /* Use the variables */ 
+          body { 
+            background-color: $bgcolor; 
+            color: $textcolor; 
+            font-size: $fontsize; 
+          }
         </code>
       </section>
-      <section class="main-section">
-        <header>Sass Introduction</header>
-        <p></p>
+      <section class="main-section" id="Introduction">
+        <header>Introduction</header>
+        <p>
+          What You Should Already Know Before you continue you should have a
+          basic understanding of the following: HTML, CSS.
+        </p>
+        <p>
+          What is Sass?
+        </p>
+        <ul>
+          <li>Sass stands for Syntactically Awesome Stylesheet</li>
+          <li>Sass is an extension to CSS</li>
+          <li>Sass is a CSS pre-processor</li>
+          <li>Sass is completely compatible with all versions of CSS</li>
+          <li>Sass reduces repetition of CSS and therefore saves time</li>
+          <li>Sass was designed by Hampton Catlin and developed by Natalie Weizenbaum in 2006</li>
+          <li>Sass is free to download and use</li>
+        </ul>
+        <p>
+          Why use Sass?
+        </p>
+        <p>
+          Stylesheets are getting larger, more complex, and harder to maintain. 
+          This is where a CSS pre-processor can help.
+          Sass lets you use features that do not exist in CSS, 
+          like variables, nested rules, mixins, imports, inheritance, built-in functions, and other stuff.
+        </p>
+        <code>
+          /* define variables for the primary colors */
+          $primary_1: #a2b9bc;
+          $primary_2: #b2ad7f;
+          $primary_3: #878f99;
+
+          /* use the variables */
+          .main-header {
+            background-color: $primary_1;
+          }
+
+          .menu-left {
+            background-color: $primary_2;
+          }
+
+          .menu-right {
+            background-color: $primary_3;
+          }
+        </code>
+        <p>
+          How Does Sass Work?
+        </p>
+        <p>
+          A browser does not understand Sass code. Therefore, you will need a 
+          Sass pre-processor to convert Sass code into standard CSS.
+          This process is called transpiling. So, you need to give 
+          a transpiler (some kind of program) some Sass code and then get some CSS code back.
+          Sass files has the ".scss" file extension. 
+        </p>
+      </section>
+      <section class="main-section" id="Installation">
+        <header>Installation</header>
+        <p>
+          System Requirements for Sass
+        </p>
+        <ul>
+          <li><b>Operating system</b> - Sass is platform independent</li>
+          <li><b>Browser support</b> - Sass works in Edge/IE (from IE 8), Firefox, Chrome, Safari, Opera</li>
+          <li><b>Programming language</b> - Sass is based on Ruby</li>
+        </ul>
+        <p>
+          Read more about Sass at the official Sass web site: https://sass-lang.com/
+        </p>
         <code></code>
       </section>
-      <section class="main-section">
-        <header></header>
-        <p></p>
-        <p></p>
-        <code> </code>
+      <section class="main-section" id="Variables">
+        <header>Variables</header>
+        <p>
+          Sass uses the $ symbol, followed by a name, to declare variables:
+        </p>
+        <code>
+          $variablename: value;
+        </code>
+        <p>
+          The following example declares 4 variables named myFont, myColor, myFontSize, and myWidth. 
+          After the variables are declared, you can use the variables wherever you want:
+        </p>
+        <code>
+          $myFont: Helvetica, sans-serif;
+          $myColor: red;
+          $myFontSize: 18px;
+          $myWidth: 680px;
+
+          body {
+            font-family: $myFont;
+            font-size: $myFontSize;
+            color: $myColor;
+          }
+
+          #container {
+            width: $myWidth;
+          }
+        </code>
+        <p>
+          So, when the Sass file is transpiled, it takes the variables (myFont, myColor, etc.) 
+          and outputs normal CSS with the variable values placed in the CSS, like this:
+        </p>
+        <code>
+          body {
+            font-family: Helvetica, sans-serif;
+            font-size: 18px;
+            color: red;
+          }
+          
+          #container {
+            width: 680px;
+          }
+        </code>
+        <p>
+          Sass variables are only available at the level of nesting where they are defined.
+          The default behavior for variable scope can be overridden by using the !global switch.
+        </p>
       </section>
-      <section class="main-section">
-        <header>Sass Installation</header>
-        <p></p>
-        <code></code>
+      <section class="main-section" id="Nested_Rules_and_Properties">
+        <header>Nested Rules and Properties</header>
+        <p>
+          Sass lets you nest CSS selectors in the same way as HTML. SCSS Syntax:
+        </p>
+        <code>
+          nav {
+            ul {
+              margin: 0;
+              padding: 0;
+              list-style: none;
+            }
+            li {
+              display: inline-block;
+            }
+            a {
+              display: block;
+              padding: 6px 12px;
+              text-decoration: none;
+            }
+          }
+        </code>
+        <p>
+          Many CSS properties have the same prefix, like font-family, font-size and font-weight or 
+          text-align, text-transform and text-overflow.
+        </p>
+        <code>
+          font: {
+            family: Helvetica, sans-serif;
+            size: 18px;
+            weight: bold;
+          }
+          
+          text: {
+            align: center;
+            transform: lowercase;
+            overflow: hidden;
+          }
+        </code>
+        <p>
+          The Sass transpiler will convert the above to normal CSS:
+        </p>
+        font-family: Helvetica, sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+
+        text-align: center;
+        text-transform: lowercase;
+        text-overflow: hidden; 
       </section>
-      <section class="main-section">
-        <header>Sass Variables</header>
-        <p></p>
-        <code></code>
+      <section class="main-section" id="@import_and_Partials">
+        <header>@import and Partials</header>
+        <p>You can create small files with CSS snippets to include in other Sass files. 
+          Examples of such files can be: reset file, 
+          variables, colors, fonts, font-sizes, etc. 
+          The CSS @import directive has a major drawback due to 
+          performance issues; it creates an extra HTTP request each time you call it. 
+          However, the Sass @import directive includes the file in the CSS; 
+          so no extra HTTP call is required at runtime!
+        </p>
+        <code>
+          @import filename;
+          @import "variables";
+          @import "colors";
+          @import "reset";
+        </code>
+        <p>
+          Let's assume we have a reset file called "reset.scss", that looks like this:
+        </p>
+        <code>
+          html,
+          body,
+          ul,
+          ol {
+            margin: 0;
+            padding: 0;
+          }
+        </code>
+        <p>
+          So, when the "standard.css" file is transpiled, the CSS will look like this:
+        </p>
+        <code>
+          html, body, ul, ol {
+            margin: 0;
+            padding: 0;
+          }
+          
+          body {
+            font-family: Helvetica, sans-serif;
+            font-size: 18px;
+            color: red;
+          }
+        </code>
+        <p>
+          By default, Sass transpiles all the .scss files directly. However, when you want to import a file, 
+          you do not need the file to be transpiled directly.
+          Sass has a mechanism for this: If you start the filename with an underscore, Sass will not transpile it. 
+          Files named this way are called partials in Sass.
+        </p>
+        <code>
+          _filename;
+        </code>
       </section>
-      <section class="main-section">
-        <header>Sass Nested Rules and Properties</header>
-        <p></p>
-        <code></code>
+      <section class="main-section" id="@mixin_and_@include">
+        <header>@mixin and @include</header>
+        <p>
+          The @mixin directive lets you create CSS code that is to be reused throughout the website.
+          The @include directive is created to let you use (include) the mixin.
+          A mixin is defined with the @mixin directive.
+        </p>
+        <code>
+          @mixin name {
+            property: value;
+            property: value;
+            ...
+          } 
+        </code>
+        <p>
+          The following example creates a mixin named "important-text":
+        </p>
+        <code>
+          @mixin important-text {
+            color: red;
+            font-size: 25px;
+            font-weight: bold;
+            border: 1px solid blue;
+          }
+
+          .danger {
+            @include important-text;
+            background-color: green;
+          }
+        </code>
+        <p>
+          The Sass transpiler will convert the above to normal CSS:
+        </p>
+        <code>
+          .danger {
+            color: red;
+            font-size: 25px;
+            font-weight: bold;
+            border: 1px solid blue;
+            background-color: green;
+          }
+        </code>
+        <p>
+          A mixin can also include other mixins:
+        </p>
+        <code>
+          @mixin special-text {
+            @include important-text;
+            @include link;
+            @include special-border;
+          }
+        </code>
+        <p>
+          Mixins accept arguments. This way you can pass variables to a mixin.
+          Here is how to define a mixin with arguments:
+        </p>
+        <code>
+          /* Define mixin with two arguments */
+          @mixin bordered($color, $width) {
+            border: $width solid $color;
+          }
+
+          .myArticle {
+            @include bordered(blue, 1px);  // Call mixin with two values
+          }
+        </code>
+        <p>
+          It is also possible to define default values for mixin variables:
+        </p>
+        <code>
+          @mixin bordered($color: blue, $width: 1px) {
+            border: $width solid $color;
+          }
+
+          .myTips {
+            @include bordered($color: orange);
+          }
+        </code>
+        <p>
+          Another good use of a mixin is for vendor prefixes.
+        </p>
+        <code>
+          @mixin transform($property) {
+            -webkit-transform: $property;
+            -ms-transform: $property;
+            transform: $property;
+          }
+          
+          .myBox {
+            @include transform(rotate(20deg));
+          }
+        </code>
       </section>
-      <section class="main-section">
-        <header>Sass @import and Partials</header>
-        <p></p>
-        <code></code>
+      <section class="main-section" id="@extend_and_Inheritance">
+        <header>@extend and Inheritance</header>
+        <p>
+          The @extend directive lets you share a set of CSS properties from one selector to another. 
+          The @extend directive is useful if you have almost identically styled elements that only differ in some small details.
+        </p>
+        <code>
+          .button-basic  {
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+          }
+          
+          .button-report  {
+            @extend .button-basic;
+            background-color: red;
+          }
+          
+          .button-submit  {
+            @extend .button-basic;
+            background-color: green;
+            color: white;
+          }
+        </code>
+        <p>
+          After compilation, the CSS will look like this:
+        </p>
+        <code>
+          .button-basic, .button-report, .button-submit {
+            border: none;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+          }
+          
+          .button-report  {
+            background-color: red;
+          }
+          
+          .button-submit  {
+            background-color: green;
+            color: white;
+          }
+        </code>
       </section>
-      <section class="main-section">
-        <header>Sass @mixin and @include</header>
-        <p></p>
-        <code></code>
-      </section>
-      <section class="main-section">
-        <header>Sass @extend and Inheritance</header>
-        <p></p>
-        <code></code>
-      </section>
-      <section class="main-section">
-        <header>Sass String Functions</header>
-        <p></p>
-        <code></code>
-      </section>
-      <section class="main-section">
-        <header>Sass Numeric Functions</header>
-        <p></p>
-        <code></code>
-      </section>
-      <section class="main-section">
-        <header>Sass List Functions</header>
-        <p></p>
-        <code></code>
-      </section>
-      <section class="main-section">
-        <header>Sass Map Functions</header>
-        <p></p>
-        <code></code>
-      </section>
-      <section class="main-section">
-        <header>Sass Selector Functions</header>
-        <p></p>
-        <code></code>
-      </section>
-      <section class="main-section">
-        <header>Sass Introspection Functions</header>
-        <p></p>
-        <code></code>
-      </section>
-      <section class="main-section">
-        <header>Sass Color Functions</header>
-        <p></p>
-        <code></code>
+      <section class="main-section" id="reference">
+        <header>Reference</header>
+          <p>This documentation was taken from <a href="https://www.w3schools.com/sass/default.php" target="_blank">W3SChools SASS Tutorial</a></p>
       </section>
     </main>
 
