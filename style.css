@@ -48,19 +48,48 @@ p {
 }
 
 #navbar ul {
+    overflow-y: auto;
+    overflow-x: hidden;
     list-style-type: none;
     padding: 0;
+    height: 100%;
 }
 
 #navbar li {
     margin: 0.5rem 0.5rem 0.5rem 1rem;
+    border-bottom: 1px solid #49515d;
+}
+
+#navbar a:hover {
+    background-color: #49515d;
+    color: #E7E9EB;
+    transition: 0.4s;
 }
 
 #navbar a {
+    display: block;
     text-decoration: none;
     color: #49515d;
+    padding: 0 0 0 0.25rem;
 }
 
 #main-doc {
     margin-left: 20%;
+}
+
+@media only screen and (max-width: 992px) {
+    #navbar {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 8rem;
+        border: none;
+    }
+    #navbar ul {
+        border: 1px solid #49515d;
+    }
+    #main-doc {
+        margin-top: 15rem;
+        margin-left: 0;
+    }
 }
